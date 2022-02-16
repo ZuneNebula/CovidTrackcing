@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+
+  mat-spinner {
+    margin-top: 10%;
+    margin-left: 45%;
+  }
+
+  td mat-icon:hover{
+    cursor: pointer;
+  }

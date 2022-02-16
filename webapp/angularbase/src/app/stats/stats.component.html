@@ -1,0 +1,72 @@
+<mat-spinner *ngIf="!loading"></mat-spinner>
+
+<div class="container sample">
+  <div class="options vertical">
+      <span id="legendTitle">Highest Grossing Movie Franchises</span>
+      <igx-legend (click)="test()" #legend orientation="Horizontal"></igx-legend>
+  </div>
+  <div class="container">
+      <igx-category-chart height="100%" width="100%"
+                  [legend]="legend"
+                  [dataSource]="testData"
+                  chartType="Column"
+                  xAxisInterval="1"
+                  yAxisTitle="Billions of U.S. Dollars"
+                  yAxisTitleLeftMargin="10"
+                  yAxisTitleRightMargin="5"
+                  yAxisLabelLeftMargin="0"
+                  isHorizontalZoomEnabled="false"
+                  isVerticalZoomEnabled="false"
+                  >
+      </igx-category-chart>
+  </div>
+</div>
+<table mat-table [dataSource]="stats" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef> Country </th>
+    <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="todaycases">
+    <th mat-header-cell *matHeaderCellDef> Today's Cases </th>
+    <td mat-cell *matCellDef="let element"> {{element.todayCases}} </td>
+  </ng-container>
+ 
+  <ng-container matColumnDef="cases">
+    <th mat-header-cell *matHeaderCellDef> Cases </th>
+    <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="todaydeaths">
+    <th mat-header-cell *matHeaderCellDef> Today's Deaths </th>
+    <td mat-cell *matCellDef="let element"> {{element.todayDeaths}} </td>
+  </ng-container>
+  
+  <ng-container matColumnDef="deaths">
+    <th mat-header-cell *matHeaderCellDef> Deaths </th>
+    <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="todayrecovered">
+    <th mat-header-cell *matHeaderCellDef> Today's Recovered </th>
+    <td mat-cell *matCellDef="let element"> {{element.todayRecovered}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="recovered">
+    <th mat-header-cell *matHeaderCellDef> Recovered </th>
+    <td mat-cell *matCellDef="let element"> {{element.recovered}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="favourites">
+    <th mat-header-cell *matHeaderCellDef> Favourites </th>
+    <td mat-cell *matCellDef="let element"> 
+      <mat-icon *ngIf="isFavourite(element.country)" (click)="markAsFavourite(element.country)">star</mat-icon>
+      <mat-icon *ngIf="!isFavourite(element.country)" (click)="markAsFavourite(element.country)">star_border</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

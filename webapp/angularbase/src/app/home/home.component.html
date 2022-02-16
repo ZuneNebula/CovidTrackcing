@@ -1,0 +1,196 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Covid-Stats</span>
+      <span class="fill-space"></span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <mat-tab-group class="container" mat-align-tabs="center">
+      <mat-tab label="Sign Up">
+        <form
+          class="container"
+          [formGroup]="registerForm"
+          novalidate
+          (ngSubmit)="onRegister()"
+        >
+          <mat-card class="shipping-card">
+            <mat-card-header>
+              <mat-card-title>Sign Up</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="mat-typography">
+              <mat-form-field class="full-width">
+                <mat-label for="firstname">First Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  id="firstname"
+                  name="firstname"
+                  formControlName="firstName"
+                  placeholder="first name"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['firstName'].hasError('required')
+                  "
+                >
+                  First Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label for="lastname">Last Name</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  name="lastname"
+                  formControlName="lastName"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['lastName'].hasError('required')"
+                >
+                  Last Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label for="email">Email</mat-label>
+                <input
+                  matInput
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['email'].hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label for="password">Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="registerForm.controls['password'].hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label for="confirmPassword">Confirm Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  formControlName="confirmPassword"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.controls['confirmPassword'].hasError(
+                      'required'
+                    )
+                  "
+                >
+                  Confirm Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!registerForm.valid"
+              >
+                Register
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </mat-tab>
+      <mat-tab label="Sign In">
+        <form
+          class="container"
+          [formGroup]="loginForm"
+          novalidate
+          (ngSubmit)="onLogin()"
+        >
+          <mat-card class="shipping-card">
+            <mat-card-header>
+              <mat-card-title>Sign In</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="mat-typography">
+              <mat-form-field class="full-width">
+                <mat-label for="email">Email</mat-label>
+                <input
+                  matInput
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['email'].hasError('required')"
+                >
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label for="password">Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="loginForm.controls['password'].hasError('required')"
+                >
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                [disabled]="!loginForm.valid"
+              >
+                Login
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </form>
+      </mat-tab>
+      <mat-tab label="Login With Google" class="oauth">
+        <h2>Sign in using Google </h2>
+      <button
+        mat-raised-button
+        color="accent"
+        onclick="window.location.href='/userservice/api/v1/authorize/googlelogin';"
+      >
+        LOGIN
+      </button>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-sidenav-content>
+</mat-sidenav-container>
