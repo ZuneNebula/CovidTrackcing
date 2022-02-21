@@ -62,7 +62,7 @@
 							<outputDirectory>${basedir}/src/main/resources/static/</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/angularbase/dist/covid-tracking/</directory>
+									<directory>${basedir}/angularbase/dist/Covid-Stats/</directory>
 								</resource>
 							</resources>
 						</configuration>

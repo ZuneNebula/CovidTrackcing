@@ -83,6 +83,9 @@
                 </configuration>
             </plugin>
         </plugins>
+		<finalName>
+			covidstats
+		</finalName>
 	</build>
 
 </project>

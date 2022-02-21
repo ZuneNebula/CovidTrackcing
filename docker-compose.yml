@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+
+  discovery:
+    image: discovery
+    build: discovery/
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 9091:9091
+
+  apigateway:
+    image: apigateway
+    build: apigateway/
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 9000:9000
+
+  mongodbservice:
+    image: mongo:5.0.3
+    container_name: mongo-container
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 27017:27017
+
+  userservice:
+    image: userservice
+    build: userservice/
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodbservice
+
+  covidstats:
+    image: covidstats
+    build: covidstats/
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 8082:8082
+    depends_on:
+      - mongodbservice
+
+  webapp:
+    image: webapp
+    build: webapp/
+    restart: always
+    network_mode: host
+#    hostname: localhost
+    ports:
+      - 4200:4200

@@ -80,6 +80,9 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>
+			apigateway
+		</finalName>
 	</build>
 
 </project>
